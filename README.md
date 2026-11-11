@@ -61,7 +61,7 @@ Postgres 16: row-level security per tenant, least-privilege app role, append-onl
 
 ## Attack test suite
 
-41 tests in `api/src/test/java/dev/crosswalk/attacks`, run against a real Postgres with row-level security on.
+42 tests in `api/src/test/java/dev/crosswalk/attacks`, run against a real Postgres with row-level security on.
 Each plays an attacker and expects a refusal.
 
 | OWASP Top 10:2025 | What is attacked |
@@ -70,7 +70,7 @@ Each plays an attacker and expects a refusal.
 | A01 + A08 database guardrails | No tenant sees nothing; tenant A can't read or insert B's rows; app role can't read hashes, disable RLS or edit audit rows; owner can't edit audit rows |
 | A02 Security Misconfiguration | Hardening headers; actuator locked down; origin refuses calls that skip the edge |
 | A05 Injection | SQL payloads in search; stored script in titles; `javascript:` and `data:` links; spreadsheet formula injection |
-| A06 Insecure Design | HTML disguised as PDF; oversized files; path traversal in names; download headers; evidence validation |
+| A06 Insecure Design | HTML disguised as PDF; oversized files; path traversal in names; names crafted for regex backtracking; download headers; evidence validation |
 | A07 Authentication Failures | Account enumeration; brute force throttle; session fixation; missing and forged CSRF tokens; sign-out |
 | A10 Mishandling of Exceptional Conditions | Errors leave as short JSON with no stack traces, SQL or class names |
 | Product behaviour | One evidence item raises every framework its control maps to, and is audited |

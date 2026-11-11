@@ -44,19 +44,40 @@ final class FileTypes {
         return Optional.empty();
     }
 
+    /**
+     * Rebuilds the name in one linear pass. No regex: a crafted name full of dots or
+     * dashes can't trigger backtracking (CodeQL java/polynomial-redos).
+     */
     static String safeName(String originalName, FileType type) {
         String name = originalName == null ? "" : originalName;
         name = name.substring(Math.max(name.lastIndexOf('/'), name.lastIndexOf('\\')) + 1);
         int dot = name.lastIndexOf('.');
         String stem = dot > 0 ? name.substring(0, dot) : name;
-        stem = stem.replaceAll("[^A-Za-z0-9._-]+", "-").replaceAll("^[.-]+|[.-]+$", "");
-        if (stem.isEmpty()) {
-            stem = "evidence";
+
+        StringBuilder clean = new StringBuilder(Math.min(stem.length(), 80));
+        boolean lastWasDash = false;
+        for (int i = 0; i < stem.length() && clean.length() < 80; i++) {
+            char c = stem.charAt(i);
+            boolean allowed = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')
+                    || c == '.' || c == '_' || c == '-';
+            if (allowed) {
+                clean.append(c);
+                lastWasDash = c == '-';
+            } else if (!lastWasDash) {
+                clean.append('-');
+                lastWasDash = true;
+            }
         }
-        if (stem.length() > 80) {
-            stem = stem.substring(0, 80);
+        int start = 0;
+        int end = clean.length();
+        while (start < end && (clean.charAt(start) == '.' || clean.charAt(start) == '-')) {
+            start++;
         }
-        return stem + "." + type.extension();
+        while (end > start && (clean.charAt(end - 1) == '.' || clean.charAt(end - 1) == '-')) {
+            end--;
+        }
+        String result = clean.substring(start, end);
+        return (result.isEmpty() ? "evidence" : result) + "." + type.extension();
     }
 
     private static String extension(String name) {

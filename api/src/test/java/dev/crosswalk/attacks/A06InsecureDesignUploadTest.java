@@ -40,6 +40,18 @@ class A06InsecureDesignUploadTest extends AttackTest {
     }
 
     @Test
+    @DisplayName("A crafted file name built to cause regex backtracking is cleaned in linear time")
+    void fileNameRedos() throws Exception {
+        String crafted = "a" + "-.".repeat(50_000) + "!" + "x".repeat(10) + ".pdf";
+        var file = new MockMultipartFile("file", crafted, "application/pdf", "%PDF-1.4\n".getBytes());
+        var nadia = signIn(NADIA);
+        org.junit.jupiter.api.Assertions.assertTimeoutPreemptively(java.time.Duration.ofSeconds(2), () ->
+                mvc.perform(upload("IAM-01", file, nadia))
+                        .andExpect(status().isCreated())
+                        .andExpect(jsonPath("$.fileName").value(org.hamcrest.Matchers.endsWith(".pdf"))));
+    }
+
+    @Test
     @DisplayName("Downloads are attachments with nosniff and a sandbox CSP")
     void downloadHeaders() throws Exception {
         var res = mvc.perform(get("/api/evidence/" + anyEvidenceOf(LEDGERLY) + "/file").session(signIn(NADIA)))
