@@ -3,7 +3,7 @@ import { api } from "./api.js";
 import { connectLive, disconnectLive, onLiveState } from "./live.js";
 import { toast, themeToggle, aboutDialog, toggleTheme } from "./ui.js";
 import { lordicon } from "./lordicon.js";
-import { openPalette } from "./palette.js";
+import { openPalette, prefetchControls } from "./palette.js";
 import { startTour, tourSeen } from "./tour.js";
 import { renderSignIn } from "./views/signin.js";
 import { renderOverview } from "./views/overview.js";
@@ -168,7 +168,8 @@ function buildShell() {
     } catch {}
   }
   refreshScores();
-  const onChange = () => refreshScores();
+  prefetchControls();
+  const onChange = () => { refreshScores(); prefetchControls(); };
   window.addEventListener("cw:change", onChange);
 
   const crumbs = h("div", { class: "crumbs" });

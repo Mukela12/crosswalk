@@ -345,7 +345,7 @@ export class CrosswalkField {
           ctx.textAlign = "center";
           ctx.font = "500 11.5px 'Plex Sans', ui-sans-serif, sans-serif";
           ctx.fillStyle = p.label(0.85);
-          ctx.fillText(f.label, f.x, f.y + 20);
+          ctx.fillText(f.short || f.label, f.x, f.y + 20);
         }
       }
     }

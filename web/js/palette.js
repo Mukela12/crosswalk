@@ -1,9 +1,17 @@
 // Command palette (Cmd/Ctrl+K): jump to any control by code, title or requirement ref,
 // move between pages, export a framework, switch theme or sign out.
-import { h, icon, clear, append, statusBadge, FRAMEWORK_SHORT } from "./dom.js";
+import { h, icon, clear, statusBadge, FRAMEWORK_SHORT } from "./dom.js";
 import { api } from "./api.js";
 
 let dialogEl = null;
+let controlsCache = null;
+let pending = null;
+
+/** Loads controls ahead of time so the palette opens with results. */
+export function prefetchControls() {
+  pending = api.get("/api/controls").then((list) => { controlsCache = list; return list; }).catch(() => controlsCache);
+  return pending;
+}
 
 export function highlight(text, query) {
   if (!query) return [text];
@@ -29,7 +37,8 @@ export async function openPalette({ navigate, session, actions }) {
   dialogEl.showModal();
   input.focus();
 
-  let controls = [];
+  let controls = controlsCache || [];
+  let loading = !controlsCache;
   let items = [];
   let active = 0;
 
@@ -81,7 +90,8 @@ export async function openPalette({ navigate, session, actions }) {
     });
     group("Go to", pg, (p) => h("div", { class: "palette-item" }, icon(p.icon), h("span", { class: "label" }, highlight(p.label, q)), null));
     group("Actions", cmd, (c) => h("div", { class: "palette-item" }, icon(c.icon), h("span", { class: "label" }, highlight(c.label, q)), c.hint ? h("kbd", {}, c.hint) : null));
-    if (!items.length) list.append(h("p", { class: "palette-empty" }, `Nothing matches "${input.value.trim()}"`));
+    if (loading && !ctrl.length) list.prepend(h("div", { class: "palette-group", role: "presentation" }, "Controls"), h("div", { class: "palette-item", "aria-disabled": "true" }, h("span", { class: "spinner" }), h("span", { class: "label faint" }, "Loading controls"), null));
+    else if (!items.length) list.append(h("p", { class: "palette-empty" }, `Nothing matches "${input.value.trim()}"`));
     select(0, false);
   }
 
@@ -109,7 +119,8 @@ export async function openPalette({ navigate, session, actions }) {
 
   render();
   try {
-    controls = await api.get("/api/controls");
-    if (dialogEl) render();
+    controls = (await (controlsCache ? prefetchControls() : pending || prefetchControls())) || [];
   } catch {}
+  loading = false;
+  if (dialogEl) render();
 }

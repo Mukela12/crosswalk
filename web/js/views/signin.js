@@ -129,7 +129,7 @@ export function renderSignIn(root, { onSignedIn }) {
   });
   field.setGraph({
     controls: GRAPH.controls.map((c) => ({ code: c.code, status: "MET" })),
-    frameworks: GRAPH.frameworks.map((f) => ({ code: f.code, label: label[f.code], sub: sub[f.code] })),
+    frameworks: GRAPH.frameworks.map((f) => ({ code: f.code, label: label[f.code], short: FRAMEWORK_SHORT[f.code], sub: sub[f.code] })),
     edges: GRAPH.controls.flatMap((c, i) => Object.keys(c.refs).map((fw) => [i, fwIndex[fw]])),
   });
   showControl(GRAPH.controls[0].code);
