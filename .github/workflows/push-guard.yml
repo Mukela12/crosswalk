@@ -1,0 +1,106 @@
+# Push guard. Undoes a forced push to any branch within about a minute and opens an issue, and reports a
+# deleted branch with the commit that restores it. Works alongside the repository ruleset that blocks forced
+# pushes and deletion on main. Set REQUIRE_SIGNED to 'true' once commits are signed with ALLOWED_KEY.
+name: push-guard
+on:
+  push:
+    branches: ['**']
+  delete:
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: push-guard-${{ github.event.ref || github.ref }}
+  cancel-in-progress: false
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+      EVENT: ${{ github.event_name }}
+      REF: ${{ github.event.ref }}
+      BEFORE: ${{ github.event.before }}
+      AFTER: ${{ github.event.after }}
+      FORCED: ${{ github.event.forced }}
+      PUSHER: ${{ github.event.pusher.name || github.actor }}
+      # The owner's SSH signing public key.
+      ALLOWED_KEY: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP5COo3vOBLDqI5FXiImGRxln5IxRBuvaTprNyVWOpeA'
+      REQUIRE_SIGNED: 'false'
+    steps:
+      - name: Check the push
+        run: |
+          set -eu
+          ZERO=0000000000000000000000000000000000000000
+          report() {
+            gh api "repos/$REPO/issues" -f title="$1" -f body="$2" >/dev/null || echo "::warning::could not open an issue"
+            echo "::error::$1"
+          }
+          if [ "$EVENT" = "delete" ]; then
+            [ "$(jq -r .ref_type "$GITHUB_EVENT_PATH")" = branch ] || exit 0
+            last=$(gh api "repos/$REPO/activity?ref=refs/heads/$REF&activity_type=branch_deletion&per_page=1" --jq '.[0].before // ""' 2>/dev/null || true)
+            report "Push guard: branch $REF was deleted" "$(printf 'Deleted by %s. Its last commit was %s.\n\nTo restore it:\n\n    gh api repos/%s/git/refs -f ref=refs/heads/%s -f sha=%s' "$PUSHER" "${last:-unknown}" "$REPO" "$REF" "${last:-SHA}")"
+            exit 0
+          fi
+          [ "$AFTER" = "$ZERO" ] && exit 0
+          branch=${REF#refs/heads/}
+          problem=""
+          # Is this commit signed by ALLOWED_KEY? Checked with ssh-keygen against the signed payload GitHub returns.
+          echo "owner $ALLOWED_KEY" > "$RUNNER_TEMP/allowed_signers"
+          signed_by_owner() {
+            [ -n "$ALLOWED_KEY" ] || return 1
+            gh api "repos/$REPO/commits/$1" > "$RUNNER_TEMP/c.json" || return 1
+            jq -j '.commit.verification.signature // ""' "$RUNNER_TEMP/c.json" > "$RUNNER_TEMP/sig"
+            grep -q 'BEGIN SSH SIGNATURE' "$RUNNER_TEMP/sig" || return 1
+            jq -j '.commit.verification.payload // ""' "$RUNNER_TEMP/c.json" |
+              ssh-keygen -Y verify -f "$RUNNER_TEMP/allowed_signers" -I owner -n git -s "$RUNNER_TEMP/sig" >/dev/null 2>&1
+          }
+          # A push that puts the branch back exactly where it was before the previous change is a restore, and is
+          # allowed, unless the previous change was this guard's own undo.
+          if [ "$BEFORE" != "$ZERO" ]; then
+            last=$(TARGET=$BEFORE gh api "repos/$REPO/activity?ref=$REF&per_page=100" --jq '[.[] | select(.after == env.TARGET)][0] | if . == null then "" else "\(.before) \(.actor.login // "-")" end' 2>/dev/null || true)
+            set -- $last
+            if [ "${1:-}" = "$AFTER" ] && [ "${2:-}" != "github-actions[bot]" ]; then echo "ok: $branch put back to what it held before the last change"; exit 0; fi
+          fi
+          # A forced push is undone unless the commit it puts in place is signed by the owner's key (a deliberate restore).
+          if [ "$FORCED" = true ] && ! signed_by_owner "$AFTER"; then problem="a forced push (the branch's history was replaced)"; fi
+          if [ -z "$problem" ] && [ "$REQUIRE_SIGNED" = true ]; then
+            if [ "$BEFORE" = "$ZERO" ]; then range="$(gh api "repos/$REPO" --jq .default_branch)...$AFTER"; else range="$BEFORE...$AFTER"; fi
+            unsigned=""
+            for c in $(gh api "repos/$REPO/compare/$range" --jq '.commits[].sha'); do signed_by_owner "$c" || unsigned="$unsigned ${c:0:12}"; done
+            [ -n "$unsigned" ] && problem="commits not signed by the owner's signing key:$unsigned"
+          fi
+          if [ -z "$problem" ]; then
+            echo "ok: $branch moved forward to $AFTER (signed with the owner's key: $(signed_by_owner "$AFTER" && echo yes || echo no))"; exit 0
+          fi
+          if [ "$BEFORE" = "$ZERO" ]; then
+            gh api -X DELETE "repos/$REPO/git/refs/heads/$branch"
+            report "Push guard removed the new branch $branch" "$(printf 'Pushed by %s: %s.\n\nThe branch was new, so it was removed. Its commit was %s.' "$PUSHER" "$problem" "$AFTER")"
+            exit 0
+          fi
+          # Where to go back to: before this push, and before any other forced push of the last 15 minutes that this guard
+          # hasn't undone yet (two pushes in quick succession). Older history is never walked: earlier restores were
+          # forced pushes too, and stepping back through them would reinstate what they removed.
+          walk='[.[] | select(.after == env.TARGET)][0] | if . == null then "" else "\(.activity_type) \(.actor.login // "-") \(.before) \((now - (try (.timestamp | sub("\\.[0-9]+"; "") | fromdateiso8601) catch 0)) | floor)" end'
+          target=$BEFORE
+          for i in $(seq 1 20); do
+            prev=$(TARGET=$target gh api "repos/$REPO/activity?ref=$REF&per_page=100" --jq "$walk" 2>/dev/null || true)
+            set -- $prev
+            if [ "${1:-}" = force_push ] && [ "${2:-}" != "github-actions[bot]" ] && [ "${4:-999999}" -lt 900 ]; then target=$3; else break; fi
+          done
+          # With signing required, back to the newest commit signed by the owner's key (if one is within reach).
+          if [ "$REQUIRE_SIGNED" = true ]; then
+            t=$target
+            for i in $(seq 1 100); do
+              if signed_by_owner "$t"; then target=$t; break; fi
+              t=$(gh api "repos/$REPO/commits/$t" --jq '.parents[0].sha // ""' 2>/dev/null || true)
+              [ -n "$t" ] || break
+            done
+          fi
+          if gh api -X PATCH "repos/$REPO/git/refs/heads/$branch" -f sha="$target" -F force=true >/dev/null; then
+            report "Push guard undid a push to $branch" "$(printf 'Pushed by %s: %s.\n\nBefore the push: %s\nPushed: %s\nRestored to: %s' "$PUSHER" "$problem" "$BEFORE" "$AFTER" "$target")"
+          else
+            report "Push guard could NOT undo a push to $branch" "$(printf 'Pushed by %s: %s.\n\nRestore it by hand to %s (before the push: %s, pushed: %s).' "$PUSHER" "$problem" "$target" "$BEFORE" "$AFTER")"
+            exit 1
+          fi

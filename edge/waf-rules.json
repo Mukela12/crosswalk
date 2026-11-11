@@ -1,0 +1,34 @@
+{
+  "description": "Crosswalk zone WAF custom rules (http_request_firewall_custom phase). Applies once the Worker is routed on a custom domain; workers.dev has no zone WAF.",
+  "rules": [
+    {
+      "description": "API accepts GET, POST and DELETE only",
+      "expression": "(starts_with(http.request.uri.path, \"/api/\") and not http.request.method in {\"GET\" \"POST\" \"DELETE\"})",
+      "action": "block"
+    },
+    {
+      "description": "Drop scanner probes for files this app never serves",
+      "expression": "(http.request.uri.path contains \"/.env\" or http.request.uri.path contains \"/.git\" or ends_with(http.request.uri.path, \".php\") or starts_with(http.request.uri.path, \"/wp-\") or starts_with(http.request.uri.path, \"/actuator\"))",
+      "action": "block"
+    },
+    {
+      "description": "Cross-site writes: state-changing API calls must come from this origin",
+      "expression": "(starts_with(http.request.uri.path, \"/api/\") and http.request.method in {\"POST\" \"DELETE\"} and len(http.request.headers[\"origin\"]) > 0 and not any(http.request.headers[\"origin\"][*] eq \"https://${HOSTNAME}\"))",
+      "action": "block"
+    },
+    {
+      "description": "Uploads larger than the API accepts",
+      "expression": "(starts_with(http.request.uri.path, \"/api/controls/\") and http.request.method eq \"POST\" and http.request.body.size gt 3145728)",
+      "action": "block"
+    }
+  ],
+  "rate_limit": {
+    "description": "Sign-in attempts per IP (http_ratelimit phase)",
+    "expression": "(http.request.uri.path eq \"/api/session\" and http.request.method eq \"POST\")",
+    "characteristics": ["ip.src", "cf.colo.id"],
+    "period": 10,
+    "requests_per_period": 5,
+    "mitigation_timeout": 10,
+    "action": "block"
+  }
+}

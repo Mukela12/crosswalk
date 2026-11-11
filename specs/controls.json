@@ -1,0 +1,1207 @@
+{
+  "frameworks": [
+    {
+      "code": "SOC2",
+      "name": "SOC 2",
+      "version": "2017 TSC, 2022 points of focus"
+    },
+    {
+      "code": "ISO27001",
+      "name": "ISO/IEC 27001",
+      "version": "2022"
+    },
+    {
+      "code": "HIPAA",
+      "name": "HIPAA Security Rule",
+      "version": "45 CFR Part 164 Subpart C"
+    },
+    {
+      "code": "PCIDSS",
+      "name": "PCI DSS",
+      "version": "4.0.1"
+    }
+  ],
+  "requirements": [
+    {
+      "framework": "SOC2",
+      "ref": "CC1.3",
+      "title": "Security structure and responsibilities"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC1.4",
+      "title": "Workforce competence and vetting"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC2.2",
+      "title": "Internal security communication"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC3.2",
+      "title": "Risk identification and analysis"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC5.3",
+      "title": "Policies put into practice"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC6.1",
+      "title": "Logical access controls"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC6.2",
+      "title": "Credential issuance and validity"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC6.3",
+      "title": "Role-based access changes"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC6.5",
+      "title": "Data removal before disposal"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC6.6",
+      "title": "Protection from external threats"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC6.7",
+      "title": "Protected data transmission"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC6.8",
+      "title": "Malicious software defenses"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC7.1",
+      "title": "Vulnerability and configuration detection"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC7.2",
+      "title": "Anomaly monitoring"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC7.3",
+      "title": "Security event evaluation"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC7.4",
+      "title": "Incident response execution"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC7.5",
+      "title": "Incident recovery and improvement"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC8.1",
+      "title": "Change management"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC9.1",
+      "title": "Business disruption mitigation"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "CC9.2",
+      "title": "Vendor and partner risk"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "A1.2",
+      "title": "Backup and recovery infrastructure"
+    },
+    {
+      "framework": "SOC2",
+      "ref": "A1.3",
+      "title": "Recovery plan testing"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "5.1",
+      "title": "Approved security policies"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "5.2",
+      "title": "Defined security roles"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "5.14",
+      "title": "Rules for sending information"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "5.16",
+      "title": "Identity lifecycle management"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "5.18",
+      "title": "Access rights lifecycle"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "5.19",
+      "title": "Supplier security risk"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "5.20",
+      "title": "Security terms in supplier contracts"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "5.22",
+      "title": "Ongoing supplier oversight"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "5.24",
+      "title": "Incident readiness planning"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "5.26",
+      "title": "Handling security incidents"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "5.27",
+      "title": "Lessons from past incidents"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "5.29",
+      "title": "Security during disruption"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "5.30",
+      "title": "ICT continuity readiness"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "6.1",
+      "title": "Background verification"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "6.3",
+      "title": "Staff security education"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "7.14",
+      "title": "Equipment disposal and reuse"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "8.5",
+      "title": "Strong authentication"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "8.7",
+      "title": "Malware defenses"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "8.8",
+      "title": "Technical vulnerability handling"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "8.10",
+      "title": "Data deletion"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "8.13",
+      "title": "Data backups"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "8.15",
+      "title": "Event logging"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "8.16",
+      "title": "Activity monitoring"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "8.24",
+      "title": "Cryptography use"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "8.28",
+      "title": "Secure coding practices"
+    },
+    {
+      "framework": "ISO27001",
+      "ref": "8.32",
+      "title": "Change control"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(1)(ii)(A)",
+      "title": "Risk analysis"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(1)(ii)(B)",
+      "title": "Risk management"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(1)(ii)(D)",
+      "title": "Information system activity review"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(2)",
+      "title": "Assigned security responsibility"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(3)(ii)(B)",
+      "title": "Workforce clearance procedure"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(3)(ii)(C)",
+      "title": "Termination procedures"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(4)(ii)(B)",
+      "title": "Access authorization"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(4)(ii)(C)",
+      "title": "Access establishment and modification"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(5)(i)",
+      "title": "Security awareness and training"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(5)(ii)(A)",
+      "title": "Security reminders"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(5)(ii)(B)",
+      "title": "Protection from malicious software"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(5)(ii)(C)",
+      "title": "Log-in monitoring"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(6)(ii)",
+      "title": "Incident response and reporting"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(7)(ii)(A)",
+      "title": "Data backup plan"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(7)(ii)(B)",
+      "title": "Disaster recovery plan"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(7)(ii)(C)",
+      "title": "Emergency mode operation plan"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(a)(7)(ii)(D)",
+      "title": "Contingency plan testing and revision"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.308(b)(3)",
+      "title": "Written business associate contract"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.310(d)(2)(i)",
+      "title": "Media disposal"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.310(d)(2)(ii)",
+      "title": "Media re-use"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.312(a)(2)(iv)",
+      "title": "Encryption and decryption"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.312(b)",
+      "title": "Audit controls"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.312(d)",
+      "title": "Person or entity authentication"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.312(e)(2)(ii)",
+      "title": "Transmission encryption"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.314(a)(2)(i)",
+      "title": "Business associate contract terms"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.316(a)",
+      "title": "Security policies and procedures"
+    },
+    {
+      "framework": "HIPAA",
+      "ref": "164.316(b)(2)(iii)",
+      "title": "Periodic documentation updates"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "3.2.1",
+      "title": "Account data retention limits"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "3.5.1",
+      "title": "Stored PAN made unreadable"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "4.2.1",
+      "title": "Strong cryptography for PAN transmission"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "5.2.1",
+      "title": "Anti-malware deployment"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "5.3.1",
+      "title": "Automatic anti-malware updates"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "6.2.3",
+      "title": "Pre-release code review"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "6.3.3",
+      "title": "Timely security patching"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "6.5.1",
+      "title": "Production change procedures"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "7.2.2",
+      "title": "Least privilege assignment"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "7.2.3",
+      "title": "Privilege approval"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "7.2.4",
+      "title": "Six-monthly user access review"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "7.2.5.1",
+      "title": "System account access review"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "8.2.4",
+      "title": "Controlled user ID changes"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "8.2.5",
+      "title": "Terminated user access revoked"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "8.4.1",
+      "title": "MFA for administrative CDE access"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "8.4.2",
+      "title": "MFA for all CDE access"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "8.4.3",
+      "title": "MFA for remote network access"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "9.4.7",
+      "title": "Electronic media destruction"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "10.2.1",
+      "title": "Audit logs enabled"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "10.4.1",
+      "title": "Daily log review"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "10.4.1.1",
+      "title": "Automated log review"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "10.5.1",
+      "title": "Twelve-month log retention"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "11.3.1",
+      "title": "Quarterly internal vulnerability scans"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "11.3.2",
+      "title": "Quarterly external ASV scans"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.1.1",
+      "title": "Security policy published"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.1.2",
+      "title": "Annual policy review"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.1.3",
+      "title": "Security responsibilities defined"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.1.4",
+      "title": "Executive security ownership"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.6.1",
+      "title": "Security awareness program"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.6.3",
+      "title": "Training at hire and annually"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.6.3.1",
+      "title": "Phishing and social engineering training"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.7.1",
+      "title": "Pre-hire personnel screening"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.8.1",
+      "title": "Service provider inventory"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.8.2",
+      "title": "Written service provider agreements"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.8.3",
+      "title": "Service provider due diligence"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.8.4",
+      "title": "Annual provider compliance monitoring"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.10.1",
+      "title": "Incident response plan"
+    },
+    {
+      "framework": "PCIDSS",
+      "ref": "12.10.2",
+      "title": "Annual incident plan test"
+    }
+  ],
+  "controls": [
+    {
+      "code": "IAM-01",
+      "domain": "Identity and access",
+      "title": "Multi-factor authentication",
+      "description": "Users must pass multi-factor authentication for remote access, administrative access, and any access to production or sensitive data environments.",
+      "maps": {
+        "SOC2": [
+          "CC6.1",
+          "CC6.6"
+        ],
+        "ISO27001": [
+          "8.5"
+        ],
+        "HIPAA": [
+          "164.312(d)"
+        ],
+        "PCIDSS": [
+          "8.4.1",
+          "8.4.2",
+          "8.4.3"
+        ]
+      },
+      "evidence": [
+        "Okta MFA policy export",
+        "MFA enrollment report"
+      ]
+    },
+    {
+      "code": "IAM-02",
+      "domain": "Identity and access",
+      "title": "Approved access provisioning",
+      "description": "Access is granted only through an approved request, and permissions are limited to what the user's role needs.",
+      "maps": {
+        "SOC2": [
+          "CC6.2",
+          "CC6.3"
+        ],
+        "ISO27001": [
+          "5.16",
+          "5.18"
+        ],
+        "HIPAA": [
+          "164.308(a)(4)(ii)(B)",
+          "164.308(a)(4)(ii)(C)"
+        ],
+        "PCIDSS": [
+          "7.2.2",
+          "7.2.3",
+          "8.2.4"
+        ]
+      },
+      "evidence": [
+        "Jira access request tickets with approvals",
+        "Role-to-permission matrix"
+      ]
+    },
+    {
+      "code": "IAM-03",
+      "domain": "Identity and access",
+      "title": "Periodic access reviews",
+      "description": "System owners review user and service account access at least every six months and remove any access that is no longer needed.",
+      "maps": {
+        "SOC2": [
+          "CC6.2",
+          "CC6.3"
+        ],
+        "ISO27001": [
+          "5.18"
+        ],
+        "HIPAA": [
+          "164.308(a)(4)(ii)(C)"
+        ],
+        "PCIDSS": [
+          "7.2.4",
+          "7.2.5.1"
+        ]
+      },
+      "evidence": [
+        "Signed access review workbook",
+        "Okta and AWS IAM user exports",
+        "Access removal tickets"
+      ]
+    },
+    {
+      "code": "IAM-04",
+      "domain": "Identity and access",
+      "title": "Access removal at termination",
+      "description": "All system access for departing employees and contractors is revoked no later than their last working day.",
+      "maps": {
+        "SOC2": [
+          "CC6.2",
+          "CC6.3"
+        ],
+        "ISO27001": [
+          "5.18"
+        ],
+        "HIPAA": [
+          "164.308(a)(3)(ii)(C)"
+        ],
+        "PCIDSS": [
+          "8.2.5"
+        ]
+      },
+      "evidence": [
+        "HR termination list reconciled to deprovisioning tickets",
+        "Okta user deactivation log"
+      ]
+    },
+    {
+      "code": "DP-01",
+      "domain": "Data protection",
+      "title": "Encryption at rest",
+      "description": "Databases, storage, and backups that hold sensitive data are encrypted at rest with strong algorithms and managed keys.",
+      "maps": {
+        "SOC2": [
+          "CC6.1"
+        ],
+        "ISO27001": [
+          "8.24"
+        ],
+        "HIPAA": [
+          "164.312(a)(2)(iv)"
+        ],
+        "PCIDSS": [
+          "3.5.1"
+        ]
+      },
+      "evidence": [
+        "AWS KMS key configuration export",
+        "RDS and S3 encryption settings screenshots",
+        "Cryptography policy"
+      ]
+    },
+    {
+      "code": "DP-02",
+      "domain": "Data protection",
+      "title": "Encryption in transit",
+      "description": "Sensitive data sent over public or untrusted networks is protected with current TLS versions, and insecure protocols are disabled.",
+      "maps": {
+        "SOC2": [
+          "CC6.7"
+        ],
+        "ISO27001": [
+          "5.14",
+          "8.24"
+        ],
+        "HIPAA": [
+          "164.312(e)(2)(ii)"
+        ],
+        "PCIDSS": [
+          "4.2.1"
+        ]
+      },
+      "evidence": [
+        "TLS configuration scan report",
+        "Load balancer TLS policy export"
+      ]
+    },
+    {
+      "code": "DP-03",
+      "domain": "Data protection",
+      "title": "Secure data disposal",
+      "description": "Sensitive data is deleted when its retention period ends, and media or devices that held it are wiped or destroyed before disposal or reuse.",
+      "maps": {
+        "SOC2": [
+          "CC6.5"
+        ],
+        "ISO27001": [
+          "7.14",
+          "8.10"
+        ],
+        "HIPAA": [
+          "164.310(d)(2)(i)",
+          "164.310(d)(2)(ii)"
+        ],
+        "PCIDSS": [
+          "3.2.1",
+          "9.4.7"
+        ]
+      },
+      "evidence": [
+        "Data retention and disposal policy",
+        "Certificates of destruction",
+        "MDM device wipe records"
+      ]
+    },
+    {
+      "code": "LOG-01",
+      "domain": "Logging and monitoring",
+      "title": "Centralized audit logging",
+      "description": "Systems that store or process sensitive data log security events such as logins, administrative actions, and data access to a central store kept for at least 12 months.",
+      "maps": {
+        "SOC2": [
+          "CC7.2"
+        ],
+        "ISO27001": [
+          "8.15"
+        ],
+        "HIPAA": [
+          "164.312(b)"
+        ],
+        "PCIDSS": [
+          "10.2.1",
+          "10.5.1"
+        ]
+      },
+      "evidence": [
+        "AWS CloudTrail configuration export",
+        "SIEM log source inventory",
+        "Log retention settings screenshot"
+      ]
+    },
+    {
+      "code": "LOG-02",
+      "domain": "Logging and monitoring",
+      "title": "Daily security log review",
+      "description": "Security logs and login activity are reviewed daily with automated alerting, and suspicious events are escalated for investigation.",
+      "maps": {
+        "SOC2": [
+          "CC7.2",
+          "CC7.3"
+        ],
+        "ISO27001": [
+          "8.16"
+        ],
+        "HIPAA": [
+          "164.308(a)(1)(ii)(D)",
+          "164.308(a)(5)(ii)(C)"
+        ],
+        "PCIDSS": [
+          "10.4.1",
+          "10.4.1.1"
+        ]
+      },
+      "evidence": [
+        "SIEM alert rule export",
+        "Daily log review tickets",
+        "Alert escalation history"
+      ]
+    },
+    {
+      "code": "CHG-01",
+      "domain": "Change management",
+      "title": "Approved and tested changes",
+      "description": "Production changes are documented, assessed for security impact, tested, and approved before release, with a rollback plan.",
+      "maps": {
+        "SOC2": [
+          "CC8.1"
+        ],
+        "ISO27001": [
+          "8.32"
+        ],
+        "PCIDSS": [
+          "6.5.1"
+        ]
+      },
+      "evidence": [
+        "Change tickets with approvals",
+        "CI pipeline test results",
+        "Change management policy"
+      ]
+    },
+    {
+      "code": "CHG-02",
+      "domain": "Change management",
+      "title": "Peer code review",
+      "description": "Every code change is reviewed for quality and security flaws by someone other than the author before it is merged and released.",
+      "maps": {
+        "SOC2": [
+          "CC8.1"
+        ],
+        "ISO27001": [
+          "8.28"
+        ],
+        "PCIDSS": [
+          "6.2.3"
+        ]
+      },
+      "evidence": [
+        "GitHub branch protection settings",
+        "Sample of merged pull requests with approvals"
+      ]
+    },
+    {
+      "code": "VUL-01",
+      "domain": "Vulnerability management",
+      "title": "Vulnerability scanning",
+      "description": "Internal and external vulnerability scans run at least quarterly, and high and critical findings are fixed and confirmed by a rescan.",
+      "maps": {
+        "SOC2": [
+          "CC7.1"
+        ],
+        "ISO27001": [
+          "8.8"
+        ],
+        "PCIDSS": [
+          "11.3.1",
+          "11.3.2"
+        ]
+      },
+      "evidence": [
+        "Quarterly internal scan reports",
+        "ASV external scan reports",
+        "Remediation tickets"
+      ]
+    },
+    {
+      "code": "VUL-02",
+      "domain": "Vulnerability management",
+      "title": "Security patching",
+      "description": "Security patches are applied within defined timeframes based on severity, with critical patches installed within 30 days of release.",
+      "maps": {
+        "SOC2": [
+          "CC8.1"
+        ],
+        "ISO27001": [
+          "8.8"
+        ],
+        "PCIDSS": [
+          "6.3.3"
+        ]
+      },
+      "evidence": [
+        "Patch compliance report",
+        "Patch management procedure"
+      ]
+    },
+    {
+      "code": "VUL-03",
+      "domain": "Vulnerability management",
+      "title": "Malware protection",
+      "description": "Servers and endpoints at risk from malware run anti-malware or EDR software that updates automatically and alerts on detections.",
+      "maps": {
+        "SOC2": [
+          "CC6.8"
+        ],
+        "ISO27001": [
+          "8.7"
+        ],
+        "HIPAA": [
+          "164.308(a)(5)(ii)(B)"
+        ],
+        "PCIDSS": [
+          "5.2.1",
+          "5.3.1"
+        ]
+      },
+      "evidence": [
+        "EDR agent coverage report",
+        "EDR policy and update settings export"
+      ]
+    },
+    {
+      "code": "IR-01",
+      "domain": "Incident response",
+      "title": "Incident response plan",
+      "description": "A documented incident response plan sets roles, triage, containment, notification, and post-incident review steps, and it is reviewed and tested at least annually.",
+      "maps": {
+        "SOC2": [
+          "CC7.3",
+          "CC7.4",
+          "CC7.5"
+        ],
+        "ISO27001": [
+          "5.24",
+          "5.26",
+          "5.27"
+        ],
+        "HIPAA": [
+          "164.308(a)(6)(ii)"
+        ],
+        "PCIDSS": [
+          "12.10.1",
+          "12.10.2"
+        ]
+      },
+      "evidence": [
+        "Incident response plan",
+        "Annual tabletop exercise report",
+        "Incident tickets with post-incident reviews"
+      ]
+    },
+    {
+      "code": "BC-01",
+      "domain": "Business continuity",
+      "title": "Continuity and recovery plan",
+      "description": "A business continuity and disaster recovery plan sets recovery objectives for critical systems and is tested at least annually, with results documented.",
+      "maps": {
+        "SOC2": [
+          "CC9.1",
+          "A1.3"
+        ],
+        "ISO27001": [
+          "5.29",
+          "5.30"
+        ],
+        "HIPAA": [
+          "164.308(a)(7)(ii)(B)",
+          "164.308(a)(7)(ii)(C)",
+          "164.308(a)(7)(ii)(D)"
+        ]
+      },
+      "evidence": [
+        "Business continuity and disaster recovery plan",
+        "Annual disaster recovery test report"
+      ]
+    },
+    {
+      "code": "BC-02",
+      "domain": "Business continuity",
+      "title": "Data backups",
+      "description": "Critical data is backed up automatically on a set schedule to storage separate from production, and restores are tested periodically.",
+      "maps": {
+        "SOC2": [
+          "A1.2",
+          "A1.3"
+        ],
+        "ISO27001": [
+          "8.13"
+        ],
+        "HIPAA": [
+          "164.308(a)(7)(ii)(A)"
+        ]
+      },
+      "evidence": [
+        "AWS Backup plan configuration",
+        "Backup job success report",
+        "Restore test record"
+      ]
+    },
+    {
+      "code": "VEN-01",
+      "domain": "Vendor risk",
+      "title": "Vendor risk assessment",
+      "description": "Vendors that handle sensitive data or affect security are listed in a vendor inventory, assessed before onboarding, and reviewed at least annually.",
+      "maps": {
+        "SOC2": [
+          "CC9.2"
+        ],
+        "ISO27001": [
+          "5.19",
+          "5.22"
+        ],
+        "PCIDSS": [
+          "12.8.1",
+          "12.8.3",
+          "12.8.4"
+        ]
+      },
+      "evidence": [
+        "Vendor inventory",
+        "Vendor security assessments with SOC 2 reports",
+        "Annual vendor review log"
+      ]
+    },
+    {
+      "code": "VEN-02",
+      "domain": "Vendor risk",
+      "title": "Vendor security agreements",
+      "description": "Contracts with vendors that access sensitive data include security, confidentiality, and breach notification terms, plus a business associate agreement when ePHI is involved.",
+      "maps": {
+        "SOC2": [
+          "CC9.2"
+        ],
+        "ISO27001": [
+          "5.20"
+        ],
+        "HIPAA": [
+          "164.308(b)(3)",
+          "164.314(a)(2)(i)"
+        ],
+        "PCIDSS": [
+          "12.8.2"
+        ]
+      },
+      "evidence": [
+        "Signed contracts with security clauses",
+        "Executed business associate agreements"
+      ]
+    },
+    {
+      "code": "PPL-01",
+      "domain": "People security",
+      "title": "Pre-hire background checks",
+      "description": "New hires who will access sensitive systems or data complete a background check before access is granted, where local law allows.",
+      "maps": {
+        "SOC2": [
+          "CC1.4"
+        ],
+        "ISO27001": [
+          "6.1"
+        ],
+        "HIPAA": [
+          "164.308(a)(3)(ii)(B)"
+        ],
+        "PCIDSS": [
+          "12.7.1"
+        ]
+      },
+      "evidence": [
+        "Background check completion report",
+        "HR onboarding checklist"
+      ]
+    },
+    {
+      "code": "PPL-02",
+      "domain": "People security",
+      "title": "Security awareness training",
+      "description": "All workers complete security awareness training that covers phishing and social engineering at hire and at least annually, and receive periodic security reminders.",
+      "maps": {
+        "SOC2": [
+          "CC2.2"
+        ],
+        "ISO27001": [
+          "6.3"
+        ],
+        "HIPAA": [
+          "164.308(a)(5)(i)",
+          "164.308(a)(5)(ii)(A)"
+        ],
+        "PCIDSS": [
+          "12.6.1",
+          "12.6.3",
+          "12.6.3.1"
+        ]
+      },
+      "evidence": [
+        "Training completion report from the LMS",
+        "Phishing simulation results",
+        "Security reminder emails"
+      ]
+    },
+    {
+      "code": "GOV-01",
+      "domain": "Governance",
+      "title": "Information security policy",
+      "description": "Management approves an information security policy, publishes it to all workers, and reviews and updates it at least annually.",
+      "maps": {
+        "SOC2": [
+          "CC5.3"
+        ],
+        "ISO27001": [
+          "5.1"
+        ],
+        "HIPAA": [
+          "164.316(a)",
+          "164.316(b)(2)(iii)"
+        ],
+        "PCIDSS": [
+          "12.1.1",
+          "12.1.2"
+        ]
+      },
+      "evidence": [
+        "Approved information security policy with version history",
+        "Annual policy review sign-off",
+        "Policy acknowledgment records"
+      ]
+    },
+    {
+      "code": "GOV-02",
+      "domain": "Governance",
+      "title": "Annual risk assessment",
+      "description": "A risk assessment of threats and vulnerabilities to sensitive data is performed at least annually, and each risk is tracked to a treatment decision.",
+      "maps": {
+        "SOC2": [
+          "CC3.2"
+        ],
+        "HIPAA": [
+          "164.308(a)(1)(ii)(A)",
+          "164.308(a)(1)(ii)(B)"
+        ]
+      },
+      "evidence": [
+        "Annual risk assessment report",
+        "Risk register with treatment plans"
+      ]
+    },
+    {
+      "code": "GOV-03",
+      "domain": "Governance",
+      "title": "Named security officer",
+      "description": "A named security officer is accountable for the security program, and security roles and responsibilities are documented for all staff.",
+      "maps": {
+        "SOC2": [
+          "CC1.3"
+        ],
+        "ISO27001": [
+          "5.2"
+        ],
+        "HIPAA": [
+          "164.308(a)(2)"
+        ],
+        "PCIDSS": [
+          "12.1.3",
+          "12.1.4"
+        ]
+      },
+      "evidence": [
+        "Security officer appointment record",
+        "Security roles and responsibilities matrix"
+      ]
+    }
+  ],
+  "sources": [
+    "eCFR, 45 CFR Part 164 Subpart C, current text via eCFR API (up to date as of 2026-10-28; last amendment 2020-11-24): https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C",
+    "NIST SP 800-66 Rev. 2, Implementing the HIPAA Security Rule, with NIST CPRT mappings to SP 800-53 Rev. 5 and CSF 1.1: https://csrc.nist.gov/pubs/sp/800/66/r2/final",
+    "PCI SSC, PCI DSS v4.0.1 Requirements and Testing Procedures (June 2024): https://www.pcisecuritystandards.org/document_library/",
+    "AICPA, 2017 Trust Services Criteria for Security, Availability, Processing Integrity, Confidentiality, and Privacy (with revised points of focus, 2022)",
+    "ISO/IEC 27001:2022 Annex A control list (93 controls, clauses 5.1 to 8.34)",
+    "Secure Controls Framework 2025.2.2 STRM crosswalks to SOC 2 (2017 TSC rev. 2022), ISO/IEC 27001:2022 and PCI DSS 4.0: https://securecontrolsframework.com/",
+    "CISO Assistant open framework library (machine-readable PCI DSS 4.0.1, TSC 2022, ISO 27001:2022, SP 800-66r2 and SCF mappings): https://github.com/intuitem/ciso-assistant-community/tree/main/backend/library/libraries",
+    "Open Security Architecture, NIST SP 800-53 to PCI DSS v4.0.1 mapping: https://www.opensecurityarchitecture.org/frameworks/pci-dss-v4/controls",
+    "ISMS.online, ISO 27002:2022 control 8.28 secure coding guidance (peer review): https://isms.online/iso-27002/control-8-28-secure-coding"
+  ]
+}

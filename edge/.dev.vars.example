@@ -1,0 +1,2 @@
+EDGE_SECRET=local-dev-secret
+ORIGIN_URL=http://localhost:8080

@@ -1,0 +1,13 @@
+# Build output
+api/target/
+# Local secrets and Wrangler state
+edge/.dev.vars
+edge/.wrangler/
+.env
+*.pem
+# Editors and OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+node_modules/
